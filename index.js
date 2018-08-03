@@ -1,5 +1,7 @@
 const express = require('express')
 
+const peopleHandler = require('./server/handlers/get.people')
+
 const app = express()
 
 app.get('/', (req, res) => {
@@ -7,6 +9,7 @@ app.get('/', (req, res) => {
     message: 'welcome to the stars, war simulation is about to begin'
   })
 })
+app.get('/people', peopleHandler)
 
 const port = process.env.PORT || 8081
 
