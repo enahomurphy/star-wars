@@ -1,22 +1,20 @@
 const rp = require('request-promise-native')
 require('dotenv').load()
 
-const url = process.env.SWAPI_API_URL || 'https://swapi.co/api/'
+const url = process.env.SWAPI_API_URL
 
 /**
- * Swapi service makes calls to swapi api ftp ge
- * required data base of the type
- * eg type people gets all star wars character
+ * Swapi service makes calls to swapi and gets all
+ * star was characters
  * since we already know the total pagination that
  * helps us make the call concurrently
  *
- * @param {*} type of data to return
- * @param {*} pageCount depth of pagination
+ * @returns {Promise}
  */
-module.exports = async (type, pageCount) => {
-  const promises = Array(pageCount)
+module.exports.getPeople = async () => {
+  const promises = Array(9)
     .fill(1).map((val, index) => {
-      return rp(`${url}${type}/?page=${++index}&format=json`)
+      return rp(`${url}people/?page=${++index}&format=json`)
     })
 
   try {
@@ -31,6 +29,6 @@ module.exports = async (type, pageCount) => {
 
     return data
   } catch (e) {
-    throw (new Error({ message: `unable to fetch ${type} data from` }))
+    throw (new Error({ message: `Unable to fetch people data from` }))
   }
 }
