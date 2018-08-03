@@ -1,0 +1,26 @@
+{
+  "name": "star-wars",
+  "version": "1.0.0",
+  "description": "simple starwars api consumption for fun :-)",
+  "main": "app.js",
+  "scripts": {
+    "test": "npm run test",
+    "start": "node index.js"
+  },
+  "keywords": [
+    "star",
+    "wars",
+    "api",
+    "restapi",
+    "http",
+    "nodejs",
+    "express"
+  ],
+  "author": "Enaho Murphy",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.3",
+    "request": "^2.87.0",
+    "request-promise-native": "^1.0.5"
+  }
+}
