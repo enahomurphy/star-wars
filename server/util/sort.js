@@ -9,7 +9,7 @@ module.exports = (entries, sortBy) => {
         break
       case 'height':
       case 'mass':
-        // sort numbers from highest to smallest
+        // sort numbers from highest to lowest
         prevSort = toInt(next[sortBy])
         nextSort = toInt(prev[sortBy])
         break

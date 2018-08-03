@@ -2,14 +2,14 @@ const { getPeople } = require('../services/swapi.service')
 const Sort = require('../util/sort')
 
 const handler = async (req, res) => {
-  const { sort } = req.query
+  const { sortBy } = req.query
   const sortValues = new Set(['name', 'height', 'mass'])
 
   try {
     let data = await getPeople()
 
-    if (sort && sortValues.has(sort)) {
-      data = Sort(data, sort)
+    if (sortBy && sortValues.has(sortBy.toLowerCase())) {
+      data = Sort(data, sortBy)
     }
 
     res.json(data)

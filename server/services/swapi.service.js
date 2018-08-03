@@ -4,19 +4,18 @@ const url = 'https://swapi.co/api/'
 
 /**
  * Swapi service makes calls to swapi and gets all
- * star was characters
+ * star wars characters
  * since we already know the total pagination that
  * helps us make the call concurrently
  *
  * @returns {Promise}
  */
 module.exports.getPeople = async () => {
-  const promises = Array(9)
-    .fill(1).map((val, index) => {
-      return rp(`${url}people/?page=${++index}&format=json`)
-    })
-
   try {
+    const promises = Array(9)
+      .fill(1).map((val, index) => {
+        return rp(`${url}people/?page=${++index}&format=json`)
+      })
     const response = await Promise.all(promises)
 
     const data = response.reduce((acc, data) => {
@@ -40,12 +39,12 @@ module.exports.getPeople = async () => {
  * @returns {Promise}
  */
 module.exports.getPlanets = async () => {
-  const promises = Array(7)
-    .fill(1).map((val, index) => {
-      return rp(`${url}planets/?page=${++index}&format=json`)
-    })
-
   try {
+    const promises = Array(7)
+      .fill(1).map((val, index) => {
+        return rp(`${url}planets/?page=${++index}&format=json`)
+      })
+
     const response = await Promise.all(promises)
 
     // get all planets
