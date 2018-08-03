@@ -11,7 +11,7 @@
     "star",
     "wars",
     "api",
-    "restapi",
+    "restAPI",
     "http",
     "nodejs",
     "express"
@@ -19,7 +19,6 @@
   "author": "Enaho Murphy",
   "license": "ISC",
   "dependencies": {
-    "dotenv": "^6.0.0",
     "express": "^4.16.3",
     "request": "^2.87.0",
     "request-promise-native": "^1.0.5"

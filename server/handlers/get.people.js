@@ -5,13 +5,19 @@ const handler = async (req, res) => {
   const { sort } = req.query
   const sortValues = new Set(['name', 'height', 'mass'])
 
-  let data = await getPeople()
+  try {
+    let data = await getPeople()
 
-  if (sort && sortValues.has(sort)) {
-    data = Sort(data, sort)
+    if (sort && sortValues.has(sort)) {
+      data = Sort(data, sort)
+    }
+
+    res.json(data)
+  } catch (e) {
+    res.status(500).json({
+      details: e.message
+    })
   }
-
-  res.send(data)
 }
 
 module.exports = [
