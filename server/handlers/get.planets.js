@@ -1,8 +1,16 @@
 const { getPlanets } = require('../services/swapi.service')
 
+let cache = []
+
 const handler = async (req, res) => {
+  let data = []
   try {
-    let data = await getPlanets()
+    if (cache.length) {
+      data = cache
+    } else {
+      data = await getPlanets()
+      cache = data
+    }
 
     res.send(data)
   } catch (e) {
